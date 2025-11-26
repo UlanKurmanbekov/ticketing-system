@@ -5,7 +5,7 @@ from .base import Base
 
 
 class Event(Base):
-    __tablename__ = 'events'
+    __tablename__ = "events"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(256))

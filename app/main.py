@@ -13,6 +13,6 @@ async def lifespan(app: FastAPI):
     await db_helper.dispose()
 
 
-app = FastAPI(title='Ticketing System', lifespan=lifespan)
+app = FastAPI(title="Ticketing System", lifespan=lifespan)
 
 app.include_router(router)

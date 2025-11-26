@@ -7,13 +7,13 @@ from .base import Base
 
 
 class Booking(Base):
-    __tablename__ = 'bookings'
+    __tablename__ = "bookings"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column()
-    event_id: Mapped[int] = mapped_column(ForeignKey('events.id'))
+    event_id: Mapped[int] = mapped_column(ForeignKey("events.id"))
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
     __table_args__ = (
-        UniqueConstraint('user_id', 'event_id', name='user_event_uc'),
+        UniqueConstraint("user_id", "event_id", name="user_event_uc"),
     )
