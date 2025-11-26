@@ -1,0 +1,28 @@
+version: '3.0'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: ticket_db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  back:
+    build: .
+    container_name: ticket_back
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./alembic/versions:/ticketing-system/alembic/versions
+      - ./alembic/env.py:/ticketing-system/alembic/env.py
+      - ./alembic.ini:/ticketing-system/alembic.ini
+
+volumes:
+  postgres_data:
