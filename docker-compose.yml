@@ -23,6 +23,7 @@ services:
       - ./alembic/versions:/ticketing-system/alembic/versions
       - ./alembic/env.py:/ticketing-system/alembic/env.py
       - ./alembic.ini:/ticketing-system/alembic.ini
+      - ./app:/ticketing-system/app
 
 volumes:
   postgres_data:
