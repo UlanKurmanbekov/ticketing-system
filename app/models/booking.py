@@ -10,7 +10,7 @@ class Booking(Base):
     __tablename__ = "bookings"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column()
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     event_id: Mapped[int] = mapped_column(ForeignKey("events.id"))
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
